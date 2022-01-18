@@ -1,38 +1,29 @@
-# create-svelte
+# bug-sveltekit-external-link
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+For issue: https://github.com/sveltejs/kit/issues/3402
 
-## Creating a project
+## To Reproduce
 
-If you're seeing this, you've probably already done this step. Congrats!
+Run `npm run build`.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## The Setup
 
-# create a new project in my-app
-npm init svelte@next my-app
+The `app.html` file was edited, adding a single stylesheet `<link>` served externally to
+the `<head>` section. E.g.:
+
+```
+<link rel="stylesheet" href="/webjars/mdi__font/5.8.55/css/materialdesignicons.min.css">
 ```
 
-> Note: the `@next` is temporary
+The `package.json` was updated with these:
 
-## Developing
+```
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.26",
+    "@sveltejs/kit": "^1.0.0-next.229",
+    "svelte": "^3.46.1"
+  },
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
